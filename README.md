@@ -2,6 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This project is developed for assessment for Pratilipi.
 
+developed by: NAKUL BAGEJA
+
 Deployed Link: https://pratilipi-assignment.netlify.app
 
 ## To run the project
