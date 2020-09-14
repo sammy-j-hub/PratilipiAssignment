@@ -5,7 +5,6 @@ import { useStateValue } from "../StateProvider";
 import { db } from "../firebase";
 
 function Story({ story }) {
-  console.log(story);
   const [{ user }, dispatch] = useStateValue();
 
   const history = useHistory();
@@ -25,7 +24,6 @@ function Story({ story }) {
         .then(item => {
           // incTotal(item.total_read);
           // incCurrent(item.cur_read);
-          console.log("item------", item.data());
           total = item.data().total_read;
           current = item.data().cur_read;
         })
@@ -51,7 +49,6 @@ function Story({ story }) {
       //If the user's stories array is zero, then add this story's id to user's stories array
       //and update this array in db and increment total read
       if (storiesViews.length == 0) {
-        console.log("----", story.id);
         storiesViews.push(story.id);
         total++;
         // setStoriesViews([...storiesViews, story.id]);
@@ -68,7 +65,6 @@ function Story({ story }) {
           }
         }
         if (i == storiesViews.length) {
-          console.log("----", story.id);
           storiesViews.push(story.id);
           total++;
           // var ele = story.id;
@@ -76,11 +72,6 @@ function Story({ story }) {
           // incTotal(total + 1);
         }
       }
-      console.log(storiesViews);
-      console.log(total);
-      console.log(current);
-
-      console.log(user);
 
       //Update the users and stories database
       await db
@@ -95,7 +86,6 @@ function Story({ story }) {
         .update({ total_read: total, cur_read: current })
         .catch(error => console.log(error));
 
-      console.log(story);
       story.data.total_read = total;
       story.data.cur_read = current;
       dispatch({

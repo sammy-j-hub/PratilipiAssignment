@@ -17,8 +17,6 @@ function Stories() {
     );
   }, []);
 
-  console.log(stories[0]);
-
   return (
     <div className="stories">
       <div className="stories__container">
